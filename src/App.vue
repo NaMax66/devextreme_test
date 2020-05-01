@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-lines />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VLines from './components/VLines.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VLines
   }
 }
 </script>
