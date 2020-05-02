@@ -1,6 +1,6 @@
 <template>
   <div class="v-charts-wrap">
-    <v-controls @add_chart="addChart"/>
+    <v-controls @add_chart="addChart" :chart-types="chartTypes" :data-sources="dataSources"/>
   </div>
 </template>
 
@@ -9,6 +9,10 @@
   export default {
     name: "VCharts",
     components: { VControls },
+    data: () => ({
+      dataSources: ['firstSource', 'secondSource'],
+      dataTypes: ['pie', 'line']
+    }),
     methods: {
       addChart (params) {
         console.log(params)
