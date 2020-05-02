@@ -11,19 +11,34 @@
     name: "VCharts",
     components: { VControls },
     data: () => ({
-      dataSources: ['firstSource', 'secondSource'],
-      chartTypes: ['pie', 'line']
+      dataSources: [
+        {name:'для линейного графика', sourceId: '5ea85157da01cf25d4586101', postfix: 'data'},
+        {name:'для пирога', sourceId: '5ea8513dda01cf25d45860ff', postfix: 'data'}
+        ],
+      chartTypes: [{ name:'Линейный', type: 'VLineChart' }, { name:'Пирог', type: 'VPieChart' }],
+      readyList: []
     }),
     methods: {
-      addChart (params) {
-        console.log(params)
-        console.log(process.env.VUE_APP_JWT)
+      async addChart (params) {
+        const data = await this.getData(params.dataType)
+        const preparedData = this.prepareData(data, params.chartType)
+        this.readyList.push(preparedData)
+
       },
       getData () {
         axios
           .get('')
           .then(res => {this.dataSources = res})
           .catch(err => console.log(err))
+      },
+      prepareData (data, chartType) {
+        let preparedData = {
+          type: null,
+          data: null
+        }
+        preparedData.type = chartType.type
+        preparedData.data = data
+        return preparedData
       }
     }
   }

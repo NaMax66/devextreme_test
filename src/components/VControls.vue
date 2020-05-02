@@ -3,10 +3,12 @@
     <DxSelectBox
       :data-source="chartTypes"
       :value.sync="currentType"
+      display-expr="name"
     />
     <DxSelectBox
       :data-source="dataSources"
       :value.sync="currentData"
+      display-expr="name"
     />
     <DxButton
       :on-click="addChart"
