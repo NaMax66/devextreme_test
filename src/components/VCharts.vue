@@ -6,7 +6,8 @@
 
 <script>
   import VControls from "@/components/VControls"
-  import axios from 'axios'
+  import axios from "axios"
+
   export default {
     name: "VCharts",
     components: { VControls },
@@ -25,11 +26,14 @@
         this.readyList.push(preparedData)
 
       },
-      getData () {
-        axios
-          .get('')
-          .then(res => {this.dataSources = res})
-          .catch(err => console.log(err))
+      async getData (dataType) {
+        const config = {
+          headers: {
+            Authorization: "Bearer " + process.env.VUE_APP_JWT
+          }
+        }
+        const url = `${process.env.VUE_APP_DATASOURCE_URL}/${dataType.sourceId}/${dataType.postfix}`
+        return await axios.get(url, config)
       },
       prepareData (data, chartType) {
         let preparedData = {
