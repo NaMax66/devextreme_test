@@ -6,6 +6,7 @@
 
 <script>
   import VControls from "@/components/VControls"
+  import axios from 'axios'
   export default {
     name: "VCharts",
     components: { VControls },
@@ -16,6 +17,13 @@
     methods: {
       addChart (params) {
         console.log(params)
+        console.log(process.env.VUE_APP_JWT)
+      },
+      getData () {
+        axios
+          .get('')
+          .then(res => {this.dataSources = res})
+          .catch(err => console.log(err))
       }
     }
   }
