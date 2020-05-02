@@ -20,7 +20,7 @@
         :value-margins-enabled="false"
         discrete-axis-division-mode="crossLabels"
       >
-        <DxGrid :visible="true"/>
+        <DxGrid :visible="false"/>
       </DxArgumentAxis>
       <DxLegend
         vertical-alignment="bottom"
