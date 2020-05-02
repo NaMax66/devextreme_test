@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <v-lines />
+    <v-charts />
   </div>
 </template>
 
 <script>
-import VLines from './components/VLines.vue'
+import VCharts from "@/components/VCharts"
 
 export default {
   name: 'App',
   components: {
-    VLines
+    VCharts
   }
 }
 </script>
