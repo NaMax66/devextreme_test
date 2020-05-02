@@ -11,7 +11,7 @@
     components: { VControls },
     data: () => ({
       dataSources: ['firstSource', 'secondSource'],
-      dataTypes: ['pie', 'line']
+      chartTypes: ['pie', 'line']
     }),
     methods: {
       addChart (params) {
