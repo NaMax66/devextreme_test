@@ -1,5 +1,5 @@
 <template>
-  <div class="v-charts-wrap">
+  <div class="v-charts_wrap">
     <div class="v-charts_btn-wrap">
       <DxButton
         :on-click="showPopup"
@@ -18,6 +18,14 @@
     >
       <v-controls @add_chart="addChart" :chart-types="chartTypes" :data-sources="dataSources"/>
     </DxPopup>
+    <div class="v-charts_list">
+      <component
+        v-for="(chart, index) in readyList"
+        :chart-data="chart"
+        :is="chart.type"
+        :key="index"
+      />
+    </div>
   </div>
 </template>
 
@@ -25,10 +33,19 @@
   import VControls from "@/components/VControls"
   import axios from "axios"
   import { DxPopup, DxButton } from "devextreme-vue"
+  import VLineChart from "@/components/VLineChart"
+  import VPieChart from "@/components/VPieChart"
+
 
   export default {
     name: "VCharts",
-    components: { VControls, DxPopup, DxButton },
+    components: {
+      VControls,
+      DxPopup,
+      DxButton,
+      VLineChart,
+      VPieChart
+    },
     data: () => ({
       /* предположим, что эти данные мы получили с сервера заранее */
       dataSources: [
@@ -38,7 +55,7 @@
       /* типы это ещё и названия компонентов графиков. У каждого вида графика свой компонент */
       chartTypes: [{ name:'Линейный', type: 'VLineChart' }, { name:'Пирог', type: 'VPieChart' }],
       readyList: [],
-      popupVisible: true,
+      popupVisible: false,
       title: "Создать график"
     }),
     methods: {
@@ -52,7 +69,7 @@
         }
         const data = await this.getData(params.dataType)
         const preparedData = this.prepareData(data, params.chartType)
-        this.readyList.push(preparedData)
+        this.readyList.unshift(preparedData)
         this.popupVisible = false
       },
       async getData (dataType) {
@@ -62,7 +79,8 @@
           }
         }
         const url = `${process.env.VUE_APP_DATASOURCE_URL}/${dataType.sourceId}/${dataType.postfix}`
-        return await axios.get(url, config)
+        const { data } = await axios.get(url, config)
+        return data
       },
       prepareData (data, chartType) {
         let preparedData = {
