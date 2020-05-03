@@ -48,14 +48,9 @@
 .v-controls_wrap {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  max-width: 120rem;
   padding: 1rem 1.5rem;
   & > div {
     margin: 1rem;
-  }
-  @media (--min-phone) {
-    flex-direction: row;
   }
 }
 </style>
