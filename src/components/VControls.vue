@@ -12,7 +12,7 @@
     />
     <DxButton
       :on-click="addChart"
-      text="Создать график"
+      text="Создать"
       type="default"
       styling-mode="contained"
     />
