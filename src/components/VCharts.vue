@@ -21,7 +21,7 @@
     <div class="v-charts_list">
       <component
         v-for="(chart, index) in readyList"
-        :chart-data="chart"
+        :chart-data="chart.data"
         :is="chart.type"
         :key="index"
       />
@@ -99,5 +99,10 @@
   .v-charts_btn-wrap {
     max-width: 120rem;
     margin: 5rem auto;
+  }
+  .v-charts_list {
+    width: 100%;
+    max-width: 120rem;
+    margin: 2rem auto;
   }
 </style>

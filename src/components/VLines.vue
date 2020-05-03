@@ -15,7 +15,7 @@
         :value-field="energy.value"
         :name="energy.name"
       />
-      <DxMargin :bottom="20"/>
+      <DxMargin :bottom="40"/>
       <DxArgumentAxis
         :value-margins-enabled="false"
         discrete-axis-division-mode="crossLabels"
