@@ -22,7 +22,7 @@
     "devextreme-themebuilder": "20.1-stable",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "postcss": "^7.0.27",
+    "postcss": "^8.2.10",
     "postcss-preset-env": "^6.7.0",
     "vue-template-compiler": "^2.6.11"
   },
